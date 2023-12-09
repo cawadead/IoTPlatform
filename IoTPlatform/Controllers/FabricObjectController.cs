@@ -20,7 +20,7 @@ namespace IoTPlatform.Controllers
         /// </summary>
         /// <returns></returns>
         [HttpGet]
-        [Route("[controller]/")]
+        [Route("v1/[controller]/")]
         public async Task<List<FabricObject>> GetAllFabricObjects()
         {
             return await _service.GetAllFabricObjects();
@@ -32,7 +32,7 @@ namespace IoTPlatform.Controllers
         /// <param name="id"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("[controller]/{id}")]
+        [Route("v1/[controller]/{id}")]
         public async Task<List<FabricObject>> GetFabricObjectById(
             [Required] string id)
         {
@@ -45,7 +45,7 @@ namespace IoTPlatform.Controllers
         /// <param name="name"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("[controller]/name={name}")]
+        [Route("v1/[controller]/name={name}")]
         public async Task<List<FabricObject>> GetFabricObjects(
             [Required] string name)
         {
@@ -58,7 +58,7 @@ namespace IoTPlatform.Controllers
         /// <param name="type"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("[controller]/type={type}")]
+        [Route("v1/[controller]/type={type}")]
         public async Task<List<FabricObject>> GetFabricObjects(
             [Required] int type)
         {
@@ -71,7 +71,7 @@ namespace IoTPlatform.Controllers
         /// <param name="parentId"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("[controller]/parentId={parentId}")]
+        [Route("v1/[controller]/parentId={parentId}")]
         public async Task<List<FabricObject>> GetFabricObjectsByParentId(
             [Required] string parentId)
         {

@@ -11,7 +11,6 @@ namespace IoTPlatform.Controllers
     public class TimeSeriesController : ControllerBase
     {
         private readonly MongoDBService _service;
-        
         public TimeSeriesController(MongoDBService service)
         {
             _service = service;
@@ -24,7 +23,7 @@ namespace IoTPlatform.Controllers
         /// <param name="timeTo"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("[controller]")]
+        [Route("v1/[controller]")]
         public async Task<IEnumerable<TimeSeries>> GetTimeSeries(
             [Required] DateTime timeFrom, 
             [Required] DateTime timeTo)
@@ -40,7 +39,7 @@ namespace IoTPlatform.Controllers
         /// <param name="pageSize"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("[controller]/Paginated/List")]
+        [Route("v1/[controller]/Paginated/List")]
         public async Task<IEnumerable<IEnumerable<TimeSeries>>> GetTimeSeriesPaginated(
             [Required] DateTime timeFrom,
             [Required] DateTime timeTo,
@@ -57,7 +56,7 @@ namespace IoTPlatform.Controllers
         /// <param name="pageNumber"></param>
         /// <returns></returns>
         [HttpGet]
-        [Route("[controller]/Paginated/Page")]
+        [Route("v1/[controller]/Paginated/Page")]
         public async Task<IEnumerable<TimeSeries>> GetTimeSeriesPage(
             [Required] DateTime timeFrom, 
             [Required] DateTime timeTo,

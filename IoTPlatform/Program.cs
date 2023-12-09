@@ -1,4 +1,4 @@
-using IoTPlatform.Models;
+using IoTPlatform;
 using IoTPlatform.Services;
 using MongoDB;
 using MongoDB.Bson;

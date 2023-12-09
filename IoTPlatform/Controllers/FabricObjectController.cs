@@ -1,8 +1,7 @@
-using IoTPlatform.Models;
+using IoTPlatform.Models.Database;
 using IoTPlatform.Services;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using ZstdSharp.Unsafe;
+
 
 namespace IoTPlatform.Controllers
 {
@@ -18,9 +17,9 @@ namespace IoTPlatform.Controllers
         }
 
         [HttpGet]
-        public async Task<List<FabricObject>> Get()
+        public async Task<List<FabricObject>> GetAllFabricObjects()
         {
-            return await _service.GetFabricObjects();
+            return await _service.GetAllFabricObjects();
         }
         
     }

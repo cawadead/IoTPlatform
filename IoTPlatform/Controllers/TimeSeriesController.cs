@@ -18,14 +18,14 @@ namespace IoTPlatform.Controllers
         }
 
         /// <summary>
-        /// ѕолучение всех данных
+        /// ѕолучение данных в определенном временном промежутке
         /// </summary>
         /// <param name="timeFrom"></param>
         /// <param name="timeTo"></param>
         /// <returns></returns>
         [HttpGet]
         [Route("[controller]")]
-        public async Task<IEnumerable<TimeSeries>> GetAllTimeSeries(
+        public async Task<IEnumerable<TimeSeries>> GetTimeSeries(
             [Required] DateTime timeFrom, 
             [Required] DateTime timeTo)
         {
@@ -41,7 +41,7 @@ namespace IoTPlatform.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("[controller]/Paginated/List")]
-        public async Task<IEnumerable<IEnumerable<TimeSeries>>> GetAllTimeSeriesPaginated(
+        public async Task<IEnumerable<IEnumerable<TimeSeries>>> GetTimeSeriesPaginated(
             [Required] DateTime timeFrom,
             [Required] DateTime timeTo,
             [Required] int pageSize)
@@ -58,7 +58,7 @@ namespace IoTPlatform.Controllers
         /// <returns></returns>
         [HttpGet]
         [Route("[controller]/Paginated/Page")]
-        public async Task<IEnumerable<TimeSeries>> GetAllTimeSeriesPage(
+        public async Task<IEnumerable<TimeSeries>> GetTimeSeriesPage(
             [Required] DateTime timeFrom, 
             [Required] DateTime timeTo,
             [Required] int pageSize,

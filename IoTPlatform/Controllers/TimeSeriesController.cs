@@ -27,7 +27,7 @@ namespace IoTPlatform.Controllers
         }
 
         [HttpGet]
-        [Route("[controller]/Paginated")]
+        [Route("[controller]/Paginated/List")]
         public async Task<IEnumerable<IEnumerable<TimeSeries>>> GetAllTimeSeriesPaginated(
             [Required] DateTime timeFrom,
             [Required] DateTime timeTo,

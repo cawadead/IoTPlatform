@@ -1,5 +1,5 @@
 using Allure.Xunit.Attributes;
-using IoTPlatform.Support;
+using IoTPlatform.Classes;
 
 #pragma warning disable CS1998
 

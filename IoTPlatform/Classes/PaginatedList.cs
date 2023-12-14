@@ -1,6 +1,6 @@
 ﻿using Amazon.SecurityToken.Model;
 
-namespace IoTPlatform.Support
+namespace IoTPlatform.Classes
 {
     public class PaginatedList<T>
     {

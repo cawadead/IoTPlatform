@@ -1,4 +1,4 @@
-﻿namespace IoTPlatform
+﻿namespace IoTPlatform.Support
 {
     public class MongoDBSettings
     {

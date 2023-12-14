@@ -1,10 +1,6 @@
-using IoTPlatform;
 using IoTPlatform.Services;
+using IoTPlatform.Support;
 using Microsoft.OpenApi.Models;
-using MongoDB;
-using MongoDB.Bson;
-using MongoDB.Driver;
-using System.Collections;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);

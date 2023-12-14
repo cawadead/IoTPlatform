@@ -2,8 +2,8 @@
 using MongoDB.Driver;
 using MongoDB.Bson;
 using IoTPlatform.Models.Database;
+using IoTPlatform.Classes;
 using IoTPlatform.Support;
-using System.Xml.Linq;
 
 namespace IoTPlatform.Services
 {

@@ -12,13 +12,24 @@
   </PropertyGroup>
   
   <ItemGroup>
+    <Compile Remove="Models\Новая папка\**" />
+    <Content Remove="Models\Новая папка\**" />
+    <EmbeddedResource Remove="Models\Новая папка\**" />
+    <None Remove="Models\Новая папка\**" />
+  </ItemGroup>
+  
+  <ItemGroup>
     <PackageReference Include="MongoDB.Driver" Version="2.22.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
-
+  
   <ItemGroup>
-    <Folder Include="Models\Новая папка\" />
+    <EditorConfigFiles Remove="C:\Users\KEISER\source\repos\IoTPlatform\IoTPlatform\.editorconfig" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <None Include="C:\Users\KEISER\source\repos\IoTPlatform\IoTPlatform\.editorconfig" />
   </ItemGroup>
 
 </Project>

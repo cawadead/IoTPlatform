@@ -8,7 +8,8 @@ namespace IoTPlatform.Classes
         private readonly List<List<T>> _list;
         private readonly int _pagesCount;
 
-        public PaginatedList(List<T> list, int pageSize) { 
+        public PaginatedList(List<T> list, int pageSize)
+        {
             _pageSize = pageSize;
             _list = new List<List<T>>();
             var data = (float)list.Count / pageSize;
@@ -18,7 +19,7 @@ namespace IoTPlatform.Classes
                 _list.Add(GetListPage(list, pageSize, i));
             }
         }
-        
+
         public List<List<T>> GetList()
         {
             return _list;
@@ -38,7 +39,7 @@ namespace IoTPlatform.Classes
         /// <returns></returns>
         public static List<T> GetListPage(List<T> list, int pageSize, int pageNumber)
         {
-            return list.Skip(pageNumber*pageSize).Take(pageSize).ToList();
+            return list.Skip(pageNumber * pageSize).Take(pageSize).ToList();
         }
     }
 }

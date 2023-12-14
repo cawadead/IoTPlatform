@@ -52,14 +52,14 @@ namespace IoTPlatform.Services
 
         #region TimeSeries
         public async Task<List<TimeSeries>> GetTimeSeries(
-            DateTime from, 
+            DateTime from,
             DateTime to)
         {
             return _timeSeriesCollection.AsQueryable().Where(x => x.date >= from && x.date < to).ToList();
         }
         public async Task<List<List<TimeSeries>>> GetTimeSeriesPaginated(
-            DateTime from, 
-            DateTime to, 
+            DateTime from,
+            DateTime to,
             int pageSize)
         {
             var data = _timeSeriesCollection.AsQueryable().Where(x => x.date >= from && x.date < to).ToList();
@@ -68,9 +68,9 @@ namespace IoTPlatform.Services
         }
 
         public async Task<List<TimeSeries>> GetTimeSeriesPage(
-            DateTime from, 
-            DateTime to, 
-            int pageSize, 
+            DateTime from,
+            DateTime to,
+            int pageSize,
             int pageNumber)
         {
             var data = _timeSeriesCollection.AsQueryable().Where(x => x.date >= from && x.date < to).ToList();

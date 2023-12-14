@@ -25,7 +25,7 @@ namespace IoTPlatform.Controllers
         [HttpGet]
         [Route("v1/[controller]")]
         public async Task<IEnumerable<TimeSeries>> GetTimeSeries(
-            [Required] DateTime timeFrom, 
+            [Required] DateTime timeFrom,
             [Required] DateTime timeTo)
         {
             return await _service.GetTimeSeries(timeFrom, timeTo);
@@ -58,7 +58,7 @@ namespace IoTPlatform.Controllers
         [HttpGet]
         [Route("v1/[controller]/Paginated/Page")]
         public async Task<IEnumerable<TimeSeries>> GetTimeSeriesPage(
-            [Required] DateTime timeFrom, 
+            [Required] DateTime timeFrom,
             [Required] DateTime timeTo,
             [Required] int pageSize,
             [Required] int pageNumber)

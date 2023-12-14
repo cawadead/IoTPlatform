@@ -1,8 +1,11 @@
+using Allure.Xunit.Attributes;
+
 namespace IoTPlatform.Test.Classes
 {
     public class PaginatedListTest
     {
-        [Fact]
+        [Fact(DisplayName = "GetListPage")]
+        [AllureDescription("Проверка получения страницы списка по ее номеру с указанием списка и размера страницы")]
         public async Task GetListPage()
         {
             // Arrange
@@ -13,7 +16,8 @@ namespace IoTPlatform.Test.Classes
             Assert.True(true);
         }
 
-        [Fact]
+        [Fact(DisplayName = "GetListPageByPageNumber")]
+        [AllureDescription("Проверка получения страницы списка по ее номеру")]
         public async Task GetListPageByPageNumber()
         {
             // Arrange

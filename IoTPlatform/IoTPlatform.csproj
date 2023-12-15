@@ -19,11 +19,11 @@
   </ItemGroup>
   
   <ItemGroup>
-    <EditorConfigFiles Remove="C:\Users\KEISER\source\repos\IoTPlatform\IoTPlatform\.editorconfig" />
+    <EditorConfigFiles Remove="..\IoTPlatform\.editorconfig" />
   </ItemGroup>
   
   <ItemGroup>
-    <None Include="C:\Users\KEISER\source\repos\IoTPlatform\IoTPlatform\.editorconfig" />
+    <None Include="..\IoTPlatform\.editorconfig" />
   </ItemGroup>
 
 </Project>

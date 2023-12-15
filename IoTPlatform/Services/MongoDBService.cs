@@ -55,14 +55,14 @@ namespace IoTPlatform.Services
             DateTime from,
             DateTime to)
         {
-            return _timeSeriesCollection.AsQueryable().Where(x => x.date >= from && x.date < to).ToList();
+            return _timeSeriesCollection.AsQueryable().Where(x => x.Date >= from && x.Date < to).ToList();
         }
         public async Task<List<List<TimeSeries>>> GetTimeSeriesPaginated(
             DateTime from,
             DateTime to,
             int pageSize)
         {
-            var data = _timeSeriesCollection.AsQueryable().Where(x => x.date >= from && x.date < to).ToList();
+            var data = _timeSeriesCollection.AsQueryable().Where(x => x.Date >= from && x.Date < to).ToList();
             var result = new PaginatedList<TimeSeries>(data, pageSize);
             return result.GetList();
         }
@@ -73,7 +73,7 @@ namespace IoTPlatform.Services
             int pageSize,
             int pageNumber)
         {
-            var data = _timeSeriesCollection.AsQueryable().Where(x => x.date >= from && x.date < to).ToList();
+            var data = _timeSeriesCollection.AsQueryable().Where(x => x.Date >= from && x.Date < to).ToList();
             return PaginatedList<TimeSeries>.GetListPage(data, pageSize, pageNumber);
         }
         #endregion

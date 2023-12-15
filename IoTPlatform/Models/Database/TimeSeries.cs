@@ -8,13 +8,14 @@ namespace IoTPlatform.Models.Database
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
-        public string id { get; set; }
+        public string Id { get; set; }
 
-        public double value { get; set; }
+        [BsonElement("value")]
+        public double Value { get; set; }
 
         [BsonElement("timestamp")]
         [BsonRepresentation(BsonType.DateTime)]
-        public DateTime? date { get; set; }
+        public DateTime? Date { get; set; }
         /*
         public string parentId { get; set; } //id оборудования по тегу
 

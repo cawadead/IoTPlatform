@@ -1,4 +1,5 @@
 using IoTPlatform.Models.Database;
+using IoTPlatform.Models.DTO;
 using IoTPlatform.Services;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
@@ -26,6 +27,13 @@ namespace IoTPlatform.Controllers
             return await _service.GetAllFabricObjects();
         }
 
+        [HttpPost]
+        [Route("v1/[controller]/")]
+        public async Task<IActionResult> SetFabricObjects(List<FabricObjectDTO> list)
+        {
+            _service.SetFabricObjects(list);
+            return Ok();
+        }
         /// <summary>
         /// Получение объекта по id
         /// </summary>

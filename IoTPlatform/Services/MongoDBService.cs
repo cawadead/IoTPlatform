@@ -4,6 +4,10 @@ using MongoDB.Bson;
 using IoTPlatform.Models.Database;
 using IoTPlatform.Classes;
 using IoTPlatform.Support;
+using Microsoft.AspNetCore.Http.HttpResults;
+using Microsoft.AspNetCore.Mvc;
+using IoTPlatform.Models.DTO;
+using MongoDB.Driver.Core.Operations;
 
 namespace IoTPlatform.Services
 {
@@ -16,7 +20,13 @@ namespace IoTPlatform.Services
         {
             var client = new MongoClient(mongoDBSettings.Value.ConnectionURI);
             var database = client.GetDatabase(mongoDBSettings.Value.DatabaseName);
+
             _fabricObjectsCollection = database.GetCollection<FabricObject>(mongoDBSettings.Value.FabricObjectsCollectionName);
+
+            if (!MongoDBSettings.CollectionExists(database, mongoDBSettings.Value.TimeSeriesCollectionName)){
+                database.CreateCollection(mongoDBSettings.Value.TimeSeriesCollectionName,
+                    new CreateCollectionOptions { TimeSeriesOptions = new TimeSeriesOptions("timestamp") });
+            }
             _timeSeriesCollection = database.GetCollection<TimeSeries>(mongoDBSettings.Value.TimeSeriesCollectionName);
         }
         #region FabricObjects
@@ -48,6 +58,24 @@ namespace IoTPlatform.Services
             var filter = new BsonDocument("_id", ObjectId.Parse(id));
             return await _fabricObjectsCollection.Find(filter).ToListAsync();
         }
+
+        public async void SetFabricObjects(IEnumerable<FabricObjectDTO> fabricObjectsDto)
+        {
+            foreach (var fabricObjectDto in fabricObjectsDto)
+            {
+                if (!fabricObjectDto.ParentId.Equals("")) { }
+                FabricObject fabricObject = new FabricObject()
+                {
+                    Id = ObjectId.GenerateNewId().ToString(),
+                    ParentId = ObjectId.Parse(fabricObjectDto.ParentId).ToString(),
+                    Name = fabricObjectDto.Name,
+                    Type = fabricObjectDto.Type,
+                };
+                await _fabricObjectsCollection.InsertOneAsync(fabricObject);
+            }
+            
+        }
+
         #endregion
 
         #region TimeSeries

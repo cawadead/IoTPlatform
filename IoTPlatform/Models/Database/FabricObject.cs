@@ -11,15 +11,13 @@ namespace IoTPlatform.Models.Database
         public string Id { get; set; }
 
         [BsonElement("parentId")]
-        public string ParentId { get; set; }
-
-        [JsonIgnore]
-        public FabricObject Parent { get; set; }
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? ParentId { get; set; }
 
         [BsonElement("name")]
         public string Name { get; set; }
 
         [BsonElement("type")]
-        public int ObjType { get; set; }
+        public int Type { get; set; }
     }
 }

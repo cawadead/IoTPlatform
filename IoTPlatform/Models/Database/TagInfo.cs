@@ -14,6 +14,6 @@ namespace IoTPlatform.Models.Database
         [BsonElement("name")]
         public string Name { get; set; }
         [BsonElement("type")]
-        public int objType { get; set; }
+        public int Type { get; set; }
     }
 }

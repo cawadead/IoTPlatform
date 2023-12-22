@@ -1,12 +1,16 @@
 using IoTPlatform.Services;
 using IoTPlatform.Support;
+using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
 
+IConfiguration config = builder.Configuration.AddEnvironmentVariables().Build();
+await config.AddVault();
+
 // Add services to the container.
-builder.Services.Configure<MongoDBSettings>(builder.Configuration.GetSection("MongoDB"));
+builder.Services.Configure<IConfiguration>(config);
 builder.Services.AddSingleton<MongoDBService>();
 
 builder.Services.AddControllers();

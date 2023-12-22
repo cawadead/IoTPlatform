@@ -4,6 +4,9 @@ using MongoDB.Driver.Linq;
 
 namespace IoTPlatform.Models.Database
 {
+    /// <summary>
+    /// Класс определяющий модель хранения временных рядов в БД
+    /// </summary>
     public class TimeSeries
     {
         [BsonId]
@@ -20,21 +23,5 @@ namespace IoTPlatform.Models.Database
         [BsonElement("metadata")]
         [BsonRepresentation(BsonType.ObjectId)]
         public string? Metadata { get; set; }
-        /*
-        public string parentId { get; set; } //id оборудования по тегу
-
-        public string name { get; set; } //Русское название тега
-
-        public string description { get; set; }
-
-        public string tag { get; set; }
-
-        public string unit { get; set; }
-
-        public string status { get; set; }
-
-        [BsonElement("type")]
-        public int objType { get; set; }
-        */
     }
 }

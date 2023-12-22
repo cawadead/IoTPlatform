@@ -18,7 +18,7 @@ namespace IoTPlatform.Controllers
         }
 
         /// <summary>
-        /// Получение всех объектов
+        /// Получить все объекты
         /// </summary>
         /// <returns></returns>
         [HttpGet]
@@ -28,6 +28,11 @@ namespace IoTPlatform.Controllers
             return await _service.GetAllFabricObjects();
         }
 
+        /// <summary>
+        /// Добавить объекты
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
         [HttpPost]
         [Route("v1/[controller]/")]
         public async Task<IActionResult> SetFabricObjects(List<FabricObjectDTO> list)
@@ -37,7 +42,7 @@ namespace IoTPlatform.Controllers
         }
 
         /// <summary>
-        /// Получение объекта по id
+        /// Получить объект по Id
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
@@ -50,7 +55,7 @@ namespace IoTPlatform.Controllers
         }
 
         /// <summary>
-        /// Получение объекта по имени
+        /// Получить объекты с заданным именем
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -63,7 +68,7 @@ namespace IoTPlatform.Controllers
         }
 
         /// <summary>
-        /// Получение объектов по типу
+        /// Получить все объекты заданного типа
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
@@ -76,7 +81,7 @@ namespace IoTPlatform.Controllers
         }
 
         /// <summary>
-        /// Получение объектов по id родителя
+        /// Получить объекты по Id родитеского элемента
         /// </summary>
         /// <param name="parentId"></param>
         /// <returns></returns>

@@ -17,7 +17,7 @@ namespace IoTPlatform.Controllers
         }
 
         /// <summary>
-        /// Получение данных в определенном временном промежутке
+        /// Получить все записи TimeSeries в заданном временном промежутке
         /// </summary>
         /// <param name="timeFrom"></param>
         /// <param name="timeTo"></param>
@@ -32,7 +32,7 @@ namespace IoTPlatform.Controllers
         }
 
         /// <summary>
-        /// Получение данных разбитых на страницы
+        /// Получить все записи TimeSeries в заданном временном промежутке в виде массивов заданного размера
         /// </summary>
         /// <param name="timeFrom"></param>
         /// <param name="timeTo"></param>
@@ -47,8 +47,9 @@ namespace IoTPlatform.Controllers
         {
             return await _service.GetTimeSeriesPaginated(timeFrom, timeTo, pageSize);
         }
+
         /// <summary>
-        /// Получение конкретной страницы, с заданием количества элементов на странице
+        /// Получить страницу записей TimeSeries в заданном временном промежутке и с заданной страницей
         /// </summary>
         /// <param name="timeFrom"></param>
         /// <param name="timeTo"></param>

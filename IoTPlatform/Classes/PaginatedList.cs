@@ -29,6 +29,11 @@ namespace IoTPlatform.Classes
             return _list;
         }
 
+        /// <summary>
+        /// Получить часть передаваемого объекта List с элементами находящимися на заданной странице
+        /// </summary>
+        /// <param name="pageNumber"></param>
+        /// <returns></returns>
         public List<T> GetListPage(int pageNumber)
         {
             return _list.ElementAt(pageNumber);

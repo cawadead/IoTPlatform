@@ -33,6 +33,7 @@ namespace IoTPlatform.Services
 
             _timeSeriesCollection = database.GetCollection<TimeSeries>(mongoDBSettings.Value.TimeSeriesCollectionName);
         }
+
         #region FabricObjects
         public async Task<List<FabricObject>> GetAllFabricObjects()
         {
@@ -63,7 +64,7 @@ namespace IoTPlatform.Services
             return await _fabricObjectsCollection.Find(filter).ToListAsync();
         }
 
-        public async Task<IActionResult> SetFabricObjects(IEnumerable<FabricObjectDTO> fabricObjectsDto)
+        public async Task<(int, string)> SetFabricObjects(IEnumerable<FabricObjectDTO> fabricObjectsDto)
         {
             try
             {
@@ -74,11 +75,11 @@ namespace IoTPlatform.Services
                     Name = x.Name,
                     Type = x.Type,
                 }));
-                return new OkResult();
+                return (StatusCodes.Status200OK, "Succesfully inserted");
             }
             catch (Exception ex)
             {
-                return new StatusCodeResult(((int)HttpStatusCode.BadRequest));
+                return (StatusCodes.Status400BadRequest, ex.Message);
             }
             
         }

@@ -1,3 +1,4 @@
+using Xunit;
 using Allure.Xunit.Attributes;
 using IoTPlatform.Classes;
 

@@ -6,7 +6,7 @@ namespace IoTPlatform.Extensions
     public static class StringExtension
     {
         /// <summary>
-        /// Convert string to byte array
+        /// Конвертация string в byte[]
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
@@ -15,7 +15,7 @@ namespace IoTPlatform.Extensions
         }
 
         /// <summary>
-        /// Convert string to stream
+        /// Конвертация string в MemoryStream
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
@@ -25,7 +25,7 @@ namespace IoTPlatform.Extensions
         }
 
         /// <summary>
-        /// Get string hash
+        /// Получить хэш string в виде byte[]
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
@@ -38,7 +38,7 @@ namespace IoTPlatform.Extensions
         }
 
         /// <summary>
-        /// Get string hash as string
+        /// Получить хэш string в виде string
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
@@ -48,7 +48,7 @@ namespace IoTPlatform.Extensions
         }
 
         /// <summary>
-        /// Get string hash code as integer
+        /// Получить хэш string в виде int
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>

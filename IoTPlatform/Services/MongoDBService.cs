@@ -8,6 +8,9 @@ using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using IoTPlatform.Models.DTO;
 using MongoDB.Driver.Core.Operations;
+using Newtonsoft.Json.Converters;
+using System.Xml;
+using System.Net;
 
 namespace IoTPlatform.Services
 {
@@ -25,8 +28,9 @@ namespace IoTPlatform.Services
 
             if (!MongoDBSettings.CollectionExists(database, mongoDBSettings.Value.TimeSeriesCollectionName)){
                 database.CreateCollection(mongoDBSettings.Value.TimeSeriesCollectionName,
-                    new CreateCollectionOptions { TimeSeriesOptions = new TimeSeriesOptions("timestamp") });
+                    new CreateCollectionOptions { TimeSeriesOptions = new TimeSeriesOptions(timeField: "timestamp", metaField: "metadata") });
             }
+
             _timeSeriesCollection = database.GetCollection<TimeSeries>(mongoDBSettings.Value.TimeSeriesCollectionName);
         }
         #region FabricObjects
@@ -59,19 +63,22 @@ namespace IoTPlatform.Services
             return await _fabricObjectsCollection.Find(filter).ToListAsync();
         }
 
-        public async void SetFabricObjects(IEnumerable<FabricObjectDTO> fabricObjectsDto)
+        public async Task<IActionResult> SetFabricObjects(IEnumerable<FabricObjectDTO> fabricObjectsDto)
         {
-            foreach (var fabricObjectDto in fabricObjectsDto)
+            try
             {
-                if (!fabricObjectDto.ParentId.Equals("")) { }
-                FabricObject fabricObject = new FabricObject()
+                await _fabricObjectsCollection.InsertManyAsync(fabricObjectsDto.Select(x => new FabricObject
                 {
                     Id = ObjectId.GenerateNewId().ToString(),
-                    ParentId = ObjectId.Parse(fabricObjectDto.ParentId).ToString(),
-                    Name = fabricObjectDto.Name,
-                    Type = fabricObjectDto.Type,
-                };
-                await _fabricObjectsCollection.InsertOneAsync(fabricObject);
+                    ParentId = ObjectId.Parse(x.ParentId).ToString(),
+                    Name = x.Name,
+                    Type = x.Type,
+                }));
+                return new OkResult();
+            }
+            catch (Exception ex)
+            {
+                return new StatusCodeResult(((int)HttpStatusCode.BadRequest));
             }
             
         }

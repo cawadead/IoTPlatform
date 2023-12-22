@@ -25,5 +25,9 @@
   <ItemGroup>
     <None Include="..\IoTPlatform\.editorconfig" />
   </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
 
 </Project>

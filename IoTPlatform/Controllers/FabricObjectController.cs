@@ -31,8 +31,8 @@ namespace IoTPlatform.Controllers
         [Route("v1/[controller]/")]
         public async Task<IActionResult> SetFabricObjects(List<FabricObjectDTO> list)
         {
-            _service.SetFabricObjects(list);
-            return Ok();
+            ;
+            return await _service.SetFabricObjects(list);
         }
         /// <summary>
         /// Получение объекта по id

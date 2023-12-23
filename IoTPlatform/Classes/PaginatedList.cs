@@ -10,7 +10,7 @@ namespace IoTPlatform.Classes
 
         public PaginatedList(List<T> list, int pageSize)
         {
-            if(pageSize <= 0)
+            if (pageSize <= 0)
             {
                 throw new ArgumentOutOfRangeException();
             }
@@ -48,7 +48,7 @@ namespace IoTPlatform.Classes
         /// <returns></returns>
         public static List<T> GetListPage(List<T> list, int pageSize, int pageNumber)
         {
-            if(list.Count < pageNumber * pageSize)
+            if (list.Count < pageNumber * pageSize)
             {
                 throw new ArgumentOutOfRangeException();
             }

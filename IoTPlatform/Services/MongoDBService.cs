@@ -20,7 +20,8 @@ namespace IoTPlatform.Services
 
             _fabricObjectsCollection = database.GetCollection<FabricObject>(configuration.GetValue<string>(EnvironmentConsts.FABRIC_OBJECT_COLLECTION_NAME));
 
-            if (!MongoDBSettings.CollectionExists(database, configuration.GetValue<string>(EnvironmentConsts.TIME_SERIES_COLLECTION_NAME))){
+            if (!MongoDBSettings.CollectionExists(database, configuration.GetValue<string>(EnvironmentConsts.TIME_SERIES_COLLECTION_NAME)))
+            {
                 database.CreateCollection(configuration.GetValue<string>(EnvironmentConsts.TIME_SERIES_COLLECTION_NAME),
                     new CreateCollectionOptions { TimeSeriesOptions = new TimeSeriesOptions(timeField: "timestamp", metaField: "metadata") });
             }
@@ -37,7 +38,7 @@ namespace IoTPlatform.Services
         {
             return await _fabricObjectsCollection.Find(new BsonDocument()).ToListAsync();
         }
-        
+
         /// <summary>
         /// Получить все объекты заданного типа
         /// </summary>
@@ -104,7 +105,7 @@ namespace IoTPlatform.Services
             {
                 return (StatusCodes.Status400BadRequest, ex.Message);
             }
-            
+
         }
 
         #endregion

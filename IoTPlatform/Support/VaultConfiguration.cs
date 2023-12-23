@@ -24,7 +24,12 @@ namespace IoTPlatform.Support
 
             foreach (var field in fieldInfo)
             {
-                configuration[field.Name] = typeof(MongoDBSettings).GetProperty(field.Name, BindingFlags.Instance | BindingFlags.Public).GetValue(mongoDBSettings, null).ToString();
+#pragma warning disable CS8602
+                configuration[field.Name] = typeof(MongoDBSettings)
+                    .GetProperty(field.Name, BindingFlags.Instance | BindingFlags.Public)
+                    .GetValue(mongoDBSettings, null)
+                    .ToString();
+#pragma warning restore CS8602
             }
             return configuration;
         }

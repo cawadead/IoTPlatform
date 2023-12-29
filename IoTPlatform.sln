@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34031.279
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IoTPlatform", "IoTPlatform\IoTPlatform.csproj", "{A6FCC96E-7529-4955-94E0-DB7991394ACF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IoTPlatform", "src\IoTPlatform\IoTPlatform.csproj", "{A6FCC96E-7529-4955-94E0-DB7991394ACF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoTPlatform.Test", "IoTPlatform.Test\IoTPlatform.Test.csproj", "{694F37D9-CB0F-4CEA-A33B-4CC06C098F42}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IoTPlatform.Test", "test\IoTPlatform.Test\IoTPlatform.Test.csproj", "{694F37D9-CB0F-4CEA-A33B-4CC06C098F42}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

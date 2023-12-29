@@ -5,10 +5,10 @@ namespace IoTPlatform.Support
 {
     public class MongoDBSettings
     {
-        public string ConnectionURI { get; set; } = null!;
-        public string DatabaseName { get; set; } = null!;
-        public string FabricObjectsCollectionName { get; set; } = null!;
-        public string TimeSeriesCollectionName { get; set; } = null!;
+        public string MONGODB_CONNECTION_STRING { get; set; } = null!;
+        public string MONGODB_IOT_DATABASE_NAME { get; set; } = null!;
+        public string FABRIC_OBJECT_COLLECTION { get; set; } = null!;
+        public string TIME_SERIES_COLLECTION { get; set; } = null!;
 
         public static bool CollectionExists(IMongoDatabase database, string collectionName)
         {

@@ -10,7 +10,8 @@ namespace IoTPlatform.Extensions
         /// </summary>
         /// <param name="str"></param>
         /// <returns></returns>
-        public static byte[] ToByteArray(this string str) { 
+        public static byte[] ToByteArray(this string str)
+        {
             return Encoding.UTF8.GetBytes(str);
         }
 
@@ -31,7 +32,7 @@ namespace IoTPlatform.Extensions
         /// <returns></returns>
         public static byte[] GetHash(this string str)
         {
-            using(HashAlgorithm algorithm = SHA256.Create())
+            using (HashAlgorithm algorithm = SHA256.Create())
             {
                 return algorithm.ComputeHash(str.ToByteArray());
             }

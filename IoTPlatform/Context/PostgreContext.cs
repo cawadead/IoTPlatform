@@ -7,7 +7,7 @@ namespace IoTPlatform.Context
     {
         public PostgreContext(DbContextOptions<PostgreContext> options) : base(options)
         {
-            
+
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)

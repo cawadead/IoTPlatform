@@ -1,16 +1,10 @@
-﻿using Microsoft.Extensions.Options;
-using MongoDB.Driver;
+﻿using MongoDB.Driver;
 using MongoDB.Bson;
 using IoTPlatform.Models.Database;
 using IoTPlatform.Classes;
 using IoTPlatform.Support;
-using Microsoft.AspNetCore.Http.HttpResults;
-using Microsoft.AspNetCore.Mvc;
 using IoTPlatform.Models.DTO;
-using MongoDB.Driver.Core.Operations;
-using Newtonsoft.Json.Converters;
-using System.Xml;
-using System.Net;
+using IoTPlatform.Classes.Consts;
 
 namespace IoTPlatform.Services
 {
@@ -19,19 +13,20 @@ namespace IoTPlatform.Services
         private readonly IMongoCollection<FabricObject> _fabricObjectsCollection;
         private readonly IMongoCollection<TimeSeries> _timeSeriesCollection;
 
-        public MongoDBService(IOptions<MongoDBSettings> mongoDBSettings)
+        public MongoDBService(IConfiguration configuration)
         {
-            var client = new MongoClient(mongoDBSettings.Value.ConnectionURI);
-            var database = client.GetDatabase(mongoDBSettings.Value.DatabaseName);
+            var client = new MongoClient(configuration.GetValue<string>(EnvironmentConsts.MONGODB_CONNECTION_STRING));
+            var database = client.GetDatabase(configuration.GetValue<string>(EnvironmentConsts.MONGODB_IOT_DATABASE_NAME));
 
-            _fabricObjectsCollection = database.GetCollection<FabricObject>(mongoDBSettings.Value.FabricObjectsCollectionName);
+            _fabricObjectsCollection = database.GetCollection<FabricObject>(configuration.GetValue<string>(EnvironmentConsts.FABRIC_OBJECT_COLLECTION_NAME));
 
-            if (!MongoDBSettings.CollectionExists(database, mongoDBSettings.Value.TimeSeriesCollectionName)){
-                database.CreateCollection(mongoDBSettings.Value.TimeSeriesCollectionName,
+            if (!MongoDBSettings.CollectionExists(database, configuration.GetValue<string>(EnvironmentConsts.TIME_SERIES_COLLECTION_NAME)))
+            {
+                database.CreateCollection(configuration.GetValue<string>(EnvironmentConsts.TIME_SERIES_COLLECTION_NAME),
                     new CreateCollectionOptions { TimeSeriesOptions = new TimeSeriesOptions(timeField: "timestamp", metaField: "metadata") });
             }
 
-            _timeSeriesCollection = database.GetCollection<TimeSeries>(mongoDBSettings.Value.TimeSeriesCollectionName);
+            _timeSeriesCollection = database.GetCollection<TimeSeries>(configuration.GetValue<string>(EnvironmentConsts.TIME_SERIES_COLLECTION_NAME));
         }
 
         #region FabricObjects
@@ -43,7 +38,7 @@ namespace IoTPlatform.Services
         {
             return await _fabricObjectsCollection.Find(new BsonDocument()).ToListAsync();
         }
-        
+
         /// <summary>
         /// Получить все объекты заданного типа
         /// </summary>
@@ -110,7 +105,7 @@ namespace IoTPlatform.Services
             {
                 return (StatusCodes.Status400BadRequest, ex.Message);
             }
-            
+
         }
 
         #endregion
